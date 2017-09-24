@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div class = 'main'>
+    <span>Your next hug is in</span>
+    <div class='countdown'>
+      <span class='days'>40</span>
+      <span class='microdays'>.123456</span>
+    </div>
+    <span>days.</span>
+  </div>
+</body>
+<style type="text/css">
+  .main {text-align: center}
+  /*.countdown {width: 30%}*/
+  .days {display: block; font-size: 10em}
+</style>
+<script type="text/javascript">
+  let hugDay = new Date(2017, 10, 20, 15);
+  function updateCountdown(){
+    let now = Date.now();
+    let strDays = String((hugDay - now)/(24*3600*1000));
+    let intDays = strDays.split('.')[0];
+    let microDays = strDays.split('.')[1].substring(0,6);
+    document.querySelector('.days').innerHTML = intDays;
+    document.querySelector('.microdays').innerHTML = `.${microDays}`;
+  }
+  window.setInterval(updateCountdown, 10)
+</script>
+</html>
